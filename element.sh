@@ -24,6 +24,7 @@ then
 else
   ELEMENT_PROPERTIES=$($PSQL "SELECT atomic_number, atomic_mass, melting_point_celsius, boiling_point_celsius, symbol, name, t.type FROM properties INNER JOIN elements USING(atomic_number) INNER JOIN types as t USING(type_id) WHERE atomic_number = $1 ")  
   
+  
   if [[ -z $ELEMENT_PROPERTIES ]]
   then
     echo "I could not find that element in the database."
